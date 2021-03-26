@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="free-towns"></ul>
+    <script>
+          /*
+          Напишите функцию, которая проверяет, есть ли такой дом
+          в списке Великих домов Вестероса. Функция работает так:
+          с задержкой в 700 мс она
+          ищет в массиве greateHouses полученное в аргументе имя.
+          Если имя найдено - пользователь должно увидеть сообщение
+          "Дом _имя существует".
+          Если не найдено - "Дом _имя не существует"
+      ​
+          Использйте Promise и setTimeout
+          */
+         const nameHouse = prompt('Name house: ')
+          
+        function check(house) {   
+            const greateHouses = ["Таргариены", "Ланнистеры", "Баратеоны", "Тиррелы", "Аррены", "Талли", "Грейджои", "Мартеллы"];
+
+        const promise = new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                (greateHouses.includes(house))?
+                resolve(`В списке Великих домов Вестероса есть дом ${house}`) : 
+                reject(`В списке нету такого дома ${house}`)
+            },700)
+        })
+        return promise;
+    }
+
+    const logger = promise => alert(promise);
+    
+    check(nameHouse).then(logger).catch(logger);
+    </script>
+  </body>
+</html>
